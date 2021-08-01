@@ -11,29 +11,79 @@
 		<h2>Listar</h2>
 	</header>
 
-	<a href="ingresar.php">Ingresar nuevo</a>
+	<a href="cadPedidoGarcon.php">Ingresar nuevo</a>
 	
+
 	<table border="1" collapse	>
 		<thead>
 			<tr>
-				<th>ID</th>
-				<th>Nombre</th>
-				<th colspan="2">Opciones</th>
+				<th>Id do pedido</th>
+				<th>Nome do cliente</th>
+				<th >Descrição</th>
+				<th>Observação</th>
+				<th>Preço</th>
+				<th>Forma de entrega</th>
+				<th>Data</th>
+				<th>Status</th>
+				<th colspan="4">Ações</th>
+				<!-- colspan="2" -->
 			</tr>
 		</thead>
 		<tbody>
 			<?php foreach (controlGarcon::listarPedidosConcluidos() as $fila) { ?>
 				<tr>
 					<td><?= $fila[0] ?></td>
-					<td><?= $fila[1] ?></td>
+					<td><?= $fila[2] ?></td>
+					<td><?= $fila[3] ?></td>
+					<td><?= $fila[4] ?></td>
+					<td><?= $fila[5] ?></td>
+					<td><?= $fila[7] ?></td>
+					<td><?= $fila[11] ?></td>
 					<td>
-						<a href="editar.php?id=<?=base64_encode($fila[0])?>">Editar</a>
+					<select id="status" onchange="statusFunction()">
+					<option value="Novo" 
+					<?php if ($fila[12] == "Novo"){
+					echo 'selected="selected"'; 
+					}?>>Novo</option>
+					<option value="Pronto" 
+					<?php if ($fila[12] == "Pronto"){
+					echo 'selected="selected"'; 
+					}?>>Pronto</option>
+					<option value="Entregue"
+					<?php if ($fila[12] == "Entregue"){
+					echo 'selected="selected"'; 
+					}?>
+					>Entregue</option>
+					<option value="Concluido"
+					<?php if ($fila[12] == "Concluido"){
+					echo 'selected="selected"'; 
+					}?>
+					>Concluído</option>
+					</select>
+			<script> 
+			function statusFunction(){
+				var x = document.getElementById("status").value;
+			}
+		
+		</script>
+				
+				</td>
+				<td>
+						<a href="../../Control/Garcon/controlGarcon.php?a=EditarStatus&idPedidos=<?=base64_encode($fila[0])?>&status=<?=base64_encode($fila[12])?>" onclick="return confirm('Deseja atualizar o status do pedido?')"><img width="20px" src="../../img/atualizar.png"/></a>
 					</td>
 					<td>
-						<a href="../../controladores/Roles.php?a=elim&id=<?=base64_encode($fila[0])?>" onclick="return confirm('¿Desea eliminar?')">Eliminar</a>
+						<a href="editPedidoGarcon.php?idPedidos=<?=base64_encode($fila[0])?>"><img width="20px" src="../../img/editar-arquivo.png"/></a>
+					</td>
+					<td>
+						<a href="../../Control/Garcon/controlGarcon.php?a=excluir&idPedidos=<?=base64_encode($fila[0])?>" onclick="return confirm('¿Desea eliminar?')"><img width="20px" src="../../img/excluir.png"/></a>
+					</td>
+					<td>
+						<a href="../../Control/Garcon/controlGarcon.php?a=excluir&idPedidos=<?=base64_encode($fila[0])?>" onclick="return confirm('¿Desea eliminar?')"><img width="20px" src="../../img/mapa.png"/></a>
 					</td>
 				</tr>
 			<?php } ?>
+			
+			
 		</tbody>
 	</table>
 </body>
