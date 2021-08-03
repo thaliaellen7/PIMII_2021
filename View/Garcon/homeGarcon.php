@@ -34,42 +34,36 @@
 				<tr>
 					<td><?= $fila[0] ?></td>
 					<td><?= $fila[2] ?></td>
-					<td><?= $fila[3] ?></td>
+					<td><?=nl2br($fila[3]); ?></td>
 					<td><?= $fila[4] ?></td>
 					<td><?= $fila[5] ?></td>
 					<td><?= $fila[7] ?></td>
-					<td><?= $fila[11] ?></td>
+					<td><?= $fila[16] ?></td>
 					<td>
-					<select id="status" onchange="statusFunction()">
+					<select id="status" >
 					<option value="Novo" 
-					<?php if ($fila[12] == "Novo"){
+					<?php if ($fila[17] == "Novo"){
 					echo 'selected="selected"'; 
 					}?>>Novo</option>
 					<option value="Pronto" 
-					<?php if ($fila[12] == "Pronto"){
+					<?php if ($fila[17] == "Pronto"){
 					echo 'selected="selected"'; 
 					}?>>Pronto</option>
 					<option value="Entregue"
-					<?php if ($fila[12] == "Entregue"){
+					<?php if ($fila[17] == "Entregue"){
 					echo 'selected="selected"'; 
 					}?>
 					>Entregue</option>
 					<option value="Concluido"
-					<?php if ($fila[12] == "Concluido"){
+					<?php if ($fila[17] == "Concluido"){
 					echo 'selected="selected"'; 
 					}?>
 					>Concluído</option>
 					</select>
-			<script> 
-			function statusFunction(){
-				var x = document.getElementById("status").value;
-			}
-		
-		</script>
-				
+			<? $myvar = document.getElementById("status").value; ?>
 				</td>
 				<td>
-						<a href="../../Control/Garcon/controlGarcon.php?a=EditarStatus&idPedidos=<?=base64_encode($fila[0])?>&status=<?=base64_encode($fila[12])?>" onclick="return confirm('Deseja atualizar o status do pedido?')"><img width="20px" src="../../img/atualizar.png"/></a>
+						<a href="../../Control/Garcon/controlGarcon.php?a=EditarStatus&idPedidos=<?=base64_encode($fila[0])?>&status=status" onclick="return confirm('Deseja atualizar o status do pedido?')"><img width="20px" src="../../img/atualizar.png"/></a>
 					</td>
 					<td>
 						<a href="editPedidoGarcon.php?idPedidos=<?=base64_encode($fila[0])?>"><img width="20px" src="../../img/editar-arquivo.png"/></a>
@@ -78,7 +72,7 @@
 						<a href="../../Control/Garcon/controlGarcon.php?a=excluir&idPedidos=<?=base64_encode($fila[0])?>" onclick="return confirm('¿Desea eliminar?')"><img width="20px" src="../../img/excluir.png"/></a>
 					</td>
 					<td>
-						<a href="../../Control/Garcon/controlGarcon.php?a=excluir&idPedidos=<?=base64_encode($fila[0])?>" onclick="return confirm('¿Desea eliminar?')"><img width="20px" src="../../img/mapa.png"/></a>
+						<a href="localDeEntregaGarcon.php?idPedidos=<?=base64_encode($fila[0])?>" ><img width="20px" src="../../img/mapa.png"/></a>
 					</td>
 				</tr>
 			<?php } ?>
