@@ -1,0 +1,90 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #ecf0f1;
+}
+
+#container-a {
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    transform: translate(-50%,-50%);
+    background-color: brown;
+    padding: 15px;
+    border-radius: 15px;
+    width: 20%;
+    display: inline-block;
+}
+
+#container-b {
+    color: white;
+    position: absolute;
+    top: 24%;
+    left: 55%;
+    transform: translate(-20%,-20%);
+    background-color: brown;
+    padding: 15px;
+    border-radius: 15px;
+    width: 20%;
+    display: inline-block;
+}
+
+#container-c {
+    color: white;
+    position: absolute;
+    top: 80.7%;
+    left: 54.5%;
+    transform: translate(-20%,-20%);
+    padding: 15px;
+    border-radius: 10px;
+    width: 22%;
+    height: 2%;
+    text-align: center;
+    display: inline-block;
+}
+
+fieldset {
+    border: 3px solid rgb(207, 207, 207);
+}
+
+.inputBox {
+    background-color: brown;
+}
+
+p {
+    color: #ecf0f1;
+}
+
+legend{
+    border: 1px #ecf0f1;
+    padding: 10px;
+    text-align: center;
+    background-color: #8b0000;
+    border-radius: 8px;
+}
+
+#submit{
+    background-image: linear-gradient(to right, brown, brown);
+    width: 100%;
+    border: none;
+    padding: 15px;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+#submit:hover{
+    background-image: linear-gradient(to right, #8B0000, #8B0000);
+}
+
+#inputUser {
+    position: relative;
+    height: 30px;
+}
