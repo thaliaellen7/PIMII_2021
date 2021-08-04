@@ -1,4 +1,9 @@
 <?php
+	session_start();
+
+	if ($_SESSION['autenticado'] != true){
+	header('Location: ../../View/Login/homeLogin.php');
+	}
 	require_once '../../Model/Garcon/modelGarcon.php';
 	$rol = controlGarcon::buscarPorId(base64_decode($_GET['idPedidos']));
 ?>

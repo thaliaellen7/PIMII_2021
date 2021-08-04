@@ -1,7 +1,6 @@
 <?php
 session_start();
 include('conexao.php');
-print "modelLogin";
 if(empty($_POST['email']) || empty($_POST['senha'])) {
 	header('Location: index.php');
 	exit();
@@ -21,10 +20,11 @@ if($row == 1) {
 	$usuario_bd = mysqli_fetch_assoc($result);
 	$_SESSION['idFuncionario'] = $usuario_bd['idFuncionario'];
 	$_SESSION['idEmpresa'] = $usuario_bd['idEmpresa'];
-	if($usuario_bd['cargo'] == "garcon"){
+	$_SESSION['autenticado'] = true;
+	if($usuario_bd['cargo'] == "garcom"){
 		header('Location: ../../View/Garcon/homeGarcon.php');
-	} else if($usuario_bd['cargo'] == "cozinheiro"){
-		// header('Location: ../../View/Garcon/homeGarcon.php');
+	} else if($usuario_bd['cargo'] == "cozinheiro(a)"){
+		 header('Location: ../../View/Cozinha/homeCozinha.php');
 	} else if($usuario_bd['cargo'] == "entregador"){
 		// header('Location: ../../View/Garcon/homeGarcon.php');
 	} else if($usuario_bd['cargo'] == "gerente"){

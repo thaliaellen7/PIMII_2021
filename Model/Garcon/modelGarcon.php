@@ -1,4 +1,5 @@
 <?php
+
 require_once '../../Model/conexao.php';
 
 class controlGarcon {
@@ -48,7 +49,7 @@ class controlGarcon {
 		$conexao = new Conexao ();
 		date_default_timezone_set('America/Sao_Paulo');
 		$dataAtual = strval(date('d/m/Y'));
-		$listado = $conexao->consultar("SELECT * FROM pedidos WHERE data LIKE '".$dataAtual."%' ORDER BY idPedidos DESC");
+		$listado = $conexao->consultar("SELECT * FROM pedidos WHERE data LIKE '".$dataAtual."%' AND idEmpresa = '".$_SESSION['idEmpresa']."' ORDER BY idPedidos DESC");
 		$conexao->encerrar();
 		return $listado;
 	}
@@ -69,10 +70,9 @@ class controlGarcon {
 	$dataAtual = strval(date('d/m/Y - H:i'));
 
 		$s = "INSERT INTO `pedidos`(`idEmpresa`, `nomeDoCliente`, `descricao`, `observacao`, `preco`, `formaDePagamento`, `formaDeEntrega`, `endereco`,`numero`, `bairro`,`complemento`,`pontoDeReferencia`, `estado`, `cidade`,`telefone`, `data`, `status`) 
-        VALUES ($this->idEmpresa,'$this->nomeDoCliente','$this->descricao' ,'$this->observacao' , $this->preco ,'$this->formaDePagamento' , '$this->formaDeEntrega' , '$this->endereco' ,'$this->numero' , '$this->bairro' ,'$this->complemento' ,'$this->pontoDeReferencia' , '$this->estado' , '$this->cidade' , '$this->telefone' ,'$dataAtual', '$this->status')";
+        VALUES ('".$_SESSION['idEmpresa']."' ,'$this->nomeDoCliente','$this->descricao' ,'$this->observacao' , $this->preco ,'$this->formaDePagamento' , '$this->formaDeEntrega' , '$this->endereco' ,'$this->numero' , '$this->bairro' ,'$this->complemento' ,'$this->pontoDeReferencia' , '$this->estado' , '$this->cidade' , '$this->telefone' ,'$dataAtual', 'Novo')";
 		$resultado = $this->conexao->atualizar($s);
 		$this->conexao->encerrar();
-		print "jlkjklj";
 		return $resultado;
 	}
 

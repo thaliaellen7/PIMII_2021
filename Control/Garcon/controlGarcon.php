@@ -1,4 +1,9 @@
-<?php require_once '../../Model/Garcon/modelGarcon.php';
+<?php
+ if ($_SESSION['autenticado'] != true){
+    header('Location: ../../View/Login/homeLogin.php');
+    }
+
+require_once '../../Model/Garcon/modelGarcon.php';
 
 $accion = $_POST['a'] ?? $_GET['a'] ?? '';
 

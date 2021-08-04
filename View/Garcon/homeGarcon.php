@@ -1,4 +1,11 @@
-<?php require_once '../../Model/Garcon/modelGarcon.php' ?>
+<?php 
+session_start();
+
+if ($_SESSION['autenticado'] != true){
+header('Location: ../../View/Login/homeLogin.php');
+}
+
+require_once '../../Model/Garcon/modelGarcon.php' ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +17,7 @@
 		<h1>Roles</h1>
 		<h2>Listar</h2>
 	</header>
-
+	<a href= "../logout.php"><button type="button">Logout!</button></a>
 	<a href="cadPedidoGarcon.php">Ingresar nuevo</a>
 	
 
@@ -23,14 +30,14 @@
 				<th>Observação</th>
 				<th>Preço</th>
 				<th>Forma de entrega</th>
-				<th>Data</th>
+				<th>Horário</th>
 				<th>Status</th>
 				<th colspan="4">Ações</th>
 				<!-- colspan="2" -->
 			</tr>
 		</thead>
 		<tbody>
-			<?php foreach (controlGarcon::listarPedidosConcluidos() as $fila) { ?>
+			<?php foreach (controlGarcon::listarPedidosConcluidos() as $fila) { $data = explode('-', $fila[16], 2); ?>
 				<tr>
 					<td><?= $fila[0] ?></td>
 					<td><?= $fila[2] ?></td>
@@ -38,7 +45,7 @@
 					<td><?= $fila[4] ?></td>
 					<td><?= $fila[5] ?></td>
 					<td><?= $fila[7] ?></td>
-					<td><?= $fila[16] ?></td>
+					<td><?= $data[1] ?></td>
 					<td>
 					<select id="status" >
 					<option value="Novo" 

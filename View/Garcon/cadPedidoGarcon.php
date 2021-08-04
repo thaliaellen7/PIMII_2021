@@ -1,3 +1,10 @@
+<?php 
+session_start();
+
+if ($_SESSION['autenticado'] != true){
+header('Location: ../../View/Login/homeLogin.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="br">
 <head>

@@ -1,4 +1,9 @@
 <?php
+session_start();
+	if ($_SESSION['autenticado'] != true){
+	header('Location: ../../View/Login/homeLogin.php');
+	}
+
 	require_once '../../Model/Garcon/modelGarcon.php';
 	$rol = controlGarcon::buscarPorId(base64_decode($_GET['idPedidos']));
 ?>
@@ -12,6 +17,7 @@
 	<header>
 		<h1>Local de entrega</h1>
 		<h2>Listar</h2>
+		
 	</header>
 
 	<table border="1" collapse	>
@@ -38,12 +44,7 @@
 					<td><?= $rol[13] ?></td>
 					<td><?= $rol[14] ?></td>
 					<td><?= $rol[15] ?></td>
-				
-				
 				</tr>
-		
-			
-			
 		</tbody>
 	</table>
 </body>
