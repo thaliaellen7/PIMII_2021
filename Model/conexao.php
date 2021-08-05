@@ -11,6 +11,12 @@ class Conexao {
 		return $this->conexao->query($sql)->fetch_all();
 	}
 
+	public function resultado ($sql) {
+		$result = mysqli_query($this->conexao, $sql);
+		$row = mysqli_num_rows($result);
+		return $row;
+	}
+
 	public function atualizar ($sql) {
 		return $this->conexao->query($sql);
 	}

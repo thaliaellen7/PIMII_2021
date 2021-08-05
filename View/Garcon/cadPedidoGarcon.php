@@ -94,7 +94,7 @@
 	</div><!--CONTAINER-B-->
 	<div id= "container-c">
 	<div class="inpuBox">
-			<input id= "submit"name="a" type="submit" value="Adicionar"/>
+			<input id= "submit" name="a" type="submit" value="Adicionar"/>
 			</div>
 	</div><!--CONTAINER-C-->
 	</form>
