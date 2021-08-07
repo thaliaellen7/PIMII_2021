@@ -10,7 +10,6 @@ $accion = $_POST['a'] ?? $_GET['a'] ?? '';
 
 if ($accion != '') {
 	$rol = new controlGarcon();
-
 	switch ($accion) {
 		case 'Adicionar':
 			$rol->idEmpresa = 0;

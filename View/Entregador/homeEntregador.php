@@ -1,6 +1,6 @@
 <?php 
 session_start();
-
+print $_SESSION['idEmpresa'];
 if ($_SESSION['autenticado'] != true){
 header('Location: ../../View/Login/homeLogin.php');
 }
@@ -24,7 +24,8 @@ require_once '../../Model/Entregador/modelEntregador.php' ?>
 				<th >Pedido</th>
 				<th>Observação</th>
 				<th>Horário</th>
-				<th>Pedido pronto</th>
+				<th>Forma de Pagamento</th>
+				<th colspan="2">Pedido pronto</th>
 				<!-- colspan="2" -->
 			</tr>
 		</thead>
@@ -36,9 +37,13 @@ require_once '../../Model/Entregador/modelEntregador.php' ?>
 					<td><?=nl2br($fila[3]); ?></td>
 					<td><?= $fila[4] ?></td>
 					<td><?= $data[1] ?></td>
+					<td><?= $fila[6] ?></td>
 					<td>
 					<a href="../../Control/Entregador/controlEntregador.php?a=EditarStatus&idPedidos=<?=base64_encode($fila[0])?>" onclick="return confirm('Deseja definir o pedido como \'Entregue'?')"><img width="20px" src="../../img/tarefas-concluidas.png"/></a>
                     </td>
+					<td>
+						<a href="localDeEntregaEntregador.php?idPedidos=<?=base64_encode($fila[0])?>" ><img width="20px" src="../../img/mapa.png"/></a>
+					</td>
 				</tr>
 			<?php } ?>
 			

@@ -15,6 +15,10 @@ if ($accion != '') {
 			$rol->idPedidos= base64_decode($_GET['idPedidos']);
 			$rol->editarStatus();
 			break;
+		case 'buscarPorId':
+			$rol->idPedidos= base64_decode($_GET['idPedidos']);
+			$rol->buscarPorId();
+			break;
 	}
 }
 

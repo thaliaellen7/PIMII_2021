@@ -12,6 +12,7 @@
 	</header>
 
 	<a href="cadPedidoGarcon.php">Ingresar nuevo</a>
+	<a href="../logout.php">logout</a>
 	
 
 	<table border="1" collapse>

@@ -61,4 +61,11 @@ class controlEntregador {
 		return $resultado;
 	}
 
+	public static function buscarPorId ($idPedidos) {
+		$conexao = new Conexao ();
+		$listado = $conexao->consultar("SELECT * FROM pedidos WHERE idPedidos = $idPedidos");
+		$conexao->encerrar();
+		return $listado[0];
+	}
+
 }
