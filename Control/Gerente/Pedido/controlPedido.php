@@ -4,12 +4,12 @@ session_start();
     header('Location: ../../View/Login/homeLogin.php');
     }
 
-require_once '../../Model/Garcon/modelGarcon.php';
+require_once '../../../Model/Gerente/Pedido/modelPedido.php';
 
 $accion = $_POST['a'] ?? $_GET['a'] ?? '';
 
 if ($accion != '') {
-	$rol = new controlGarcon();
+	$rol = new controlPedido();
 	switch ($accion) {
 		case 'Adicionar':
 			$rol->idEmpresa = $_SESSION['idEmpresa'];
@@ -67,4 +67,4 @@ if ($accion != '') {
 }
 
 
-header('Location: ../../View/Garcon/homeGarcon.php');
+header('Location: ../../../View/Gerente/Pedido/homePedido.php');

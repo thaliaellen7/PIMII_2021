@@ -4,22 +4,20 @@ session_start();
     header('Location: ../../View/Login/homeLogin.php');
     }
 
-require_once '../../Model/Garcon/modelGarcon.php';
+require_once '../../../Model/Gerente/Funcionario/modelFuncionario.php';
 
 $accion = $_POST['a'] ?? $_GET['a'] ?? '';
 
 if ($accion != '') {
-	$rol = new controlGarcon();
+	$rol = new controlFuncionario();
 	switch ($accion) {
-		case 'Adicionar':
+		case 'Adicionar Funcionário':
 			$rol->idEmpresa = $_SESSION['idEmpresa'];
-            $rol->nomeDoCliente = $_POST['nomeDoCliente'];
-            $descricao_text = $_POST['descricao'];
-            $rol->descricao = htmlspecialchars($descricao_text, ENT_QUOTES);
-            $rol->observacao = $_POST['observacao'];
-            $rol->preco = $_POST['preco'];
-            $rol->formaDePagamento = $_POST['formaDePagamento'];
-            $rol->formaDeEntrega = $_POST['formaDeEntrega'];
+            $rol->nome = $_POST['nome'];
+            $rol->email = $_POST['email'];
+            $rol->senha = $_POST['senha'];
+            $rol->cargo = $_POST['cargo'];
+            $rol->salario = $_POST['salario'];
             $rol->endereco = $_POST['endereco'];
             $rol->numero = $_POST['numero'];
             $rol->bairro = $_POST['bairro'];
@@ -28,7 +26,6 @@ if ($accion != '') {
             $rol->estado = $_POST['estado'];
             $rol->cidade = $_POST['cidade'];
             $rol->telefone = $_POST['telefone'];
-            $rol->status = "Novo";
 			$rol->cadastrar();
 			break;
 		case 'EditarStatus':
@@ -37,16 +34,13 @@ if ($accion != '') {
 			$rol->status = base64_decode($_GET['status']);
 			$rol->editarStatus();
 			break;
-        case 'EditarPedido':
-            $rol->idPedidos= base64_decode($_POST['idPedidos']);
-            $rol->idEmpresa = $_POST['idEmpresa'];
-            $rol->nomeDoCliente = $_POST['nomeDoCliente'];
-            $descricao_text = $_POST['descricao'];
-            $rol->descricao = htmlspecialchars($descricao_text, ENT_QUOTES);
-            $rol->observacao = $_POST['observacao'];
-            $rol->preco = $_POST['preco'];
-            $rol->formaDePagamento = $_POST['formaDePagamento'];
-            $rol->formaDeEntrega = $_POST['formaDeEntrega'];
+        case 'Editar Funcionário':
+            $rol->idFuncionario = base64_decode($_POST['idFuncionario']);
+            $rol->nome = $_POST['nome'];
+            $rol->email = $_POST['email'];
+            $rol->senha = $_POST['senha'];
+            $rol->cargo = $_POST['cargo'];
+            $rol->salario = $_POST['salario'];
             $rol->endereco = $_POST['endereco'];
             $rol->numero = $_POST['numero'];
             $rol->bairro = $_POST['bairro'];
@@ -55,16 +49,14 @@ if ($accion != '') {
             $rol->estado = $_POST['estado'];
             $rol->cidade = $_POST['cidade'];
             $rol->telefone = $_POST['telefone'];
-            $rol->data = $_POST['data'];
-            $rol->status = $_POST['status'];
-            $rol->editarPedido();
+            $rol->editarFuncionario();
             break;
 		case 'excluir':
-			$rol->idPedidos = base64_decode($_GET['idPedidos']);
+			$rol->idFuncionario = base64_decode($_GET['idFuncionario']);
 			$rol->excluir();
 			break;
 	}
 }
 
 
-header('Location: ../../View/Garcon/homeGarcon.php');
+header('Location: ../../../View/Gerente/Funcionario/homeFuncionario.php');
