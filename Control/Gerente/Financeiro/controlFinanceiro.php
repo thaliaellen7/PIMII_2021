@@ -4,59 +4,45 @@ session_start();
     header('Location: ../../View/Login/homeLogin.php');
     }
 
-require_once '../../../Model/Gerente/Financeiro/modelFinanceiro.php';
+require_once '../../../Model/Gerente/Cardapio/modelCardapio.php';
 
 $accion = $_POST['a'] ?? $_GET['a'] ?? '';
 
 if ($accion != '') {
 	$rol = new controlFinanceiro();
 	switch ($accion) {
-		case 'Adicionar Funcionário':
-			$rol->idEmpresa = $_SESSION['idEmpresa'];
-            $rol->nome = $_POST['nome'];
-            $rol->email = $_POST['email'];
-            $rol->senha = $_POST['senha'];
-            $rol->cargo = $_POST['cargo'];
-            $rol->salario = $_POST['salario'];
-            $rol->endereco = $_POST['endereco'];
-            $rol->numero = $_POST['numero'];
-            $rol->bairro = $_POST['bairro'];
-            $rol->complemento = $_POST['complemento'];
-            $rol->pontoDeReferencia = $_POST['pontoDeReferencia'];
-            $rol->estado = $_POST['estado'];
-            $rol->cidade = $_POST['cidade'];
-            $rol->telefone = $_POST['telefone'];
-			$rol->cadastrar();
+		case 'Disponivel':
+            print base64_decode($_GET['idItem']);
+			$rol->idItem= base64_decode($_GET['idItem']);
+			$rol->disponivel();
 			break;
-		case 'EditarStatus':
-            print "asfasdfasfasfas";
-			$rol->idPedidos= base64_decode($_GET['idPedidos']);
-			$rol->status = base64_decode($_GET['status']);
-			$rol->editarStatus();
+        case 'Indisponivel':
+            print base64_decode($_GET['idItem']);
+			$rol->idItem= base64_decode($_GET['idItem']);
+			$rol->indisponivel();
 			break;
-        case 'Editar Funcionário':
-            $rol->idFuncionario = base64_decode($_POST['idFuncionario']);
+        case 'Editar Item':
+            $rol->idItem = base64_decode($_POST['idItem']);
             $rol->nome = $_POST['nome'];
-            $rol->email = $_POST['email'];
-            $rol->senha = $_POST['senha'];
-            $rol->cargo = $_POST['cargo'];
-            $rol->salario = $_POST['salario'];
-            $rol->endereco = $_POST['endereco'];
-            $rol->numero = $_POST['numero'];
-            $rol->bairro = $_POST['bairro'];
-            $rol->complemento = $_POST['complemento'];
-            $rol->pontoDeReferencia = $_POST['pontoDeReferencia'];
-            $rol->estado = $_POST['estado'];
-            $rol->cidade = $_POST['cidade'];
-            $rol->telefone = $_POST['telefone'];
-            $rol->editarFuncionario();
+            $rol->descricao = $_POST['descricao'];
+            $rol->preco = $_POST['preco'];
+            $rol->categoria = $_POST['categoria'];
+            $rol->editarItem();
+            break;
+		case 'Adicionar Item':
+            $rol->nome = $_POST['nome'];
+			$descricao_text = $_POST['descricao'];
+            $rol->descricao = htmlspecialchars($descricao_text, ENT_QUOTES);
+            $rol->preco = $_POST['preco'];
+            $rol->categoria = $_POST['categoria'];
+            $rol->adicionarItem();
             break;
 		case 'excluir':
-			$rol->idFuncionario = base64_decode($_GET['idFuncionario']);
+			$rol->idItem = base64_decode($_GET['idItem']);
 			$rol->excluir();
 			break;
 	}
 }
 
 
-header('Location: ../../../View/Gerente/Financeiro/homeFinanceiro.php');
+header('Location: ../../../View/Gerente/Cardapio/homeCardapio.php');

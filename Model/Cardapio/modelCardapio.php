@@ -21,39 +21,17 @@ class controlCardapio {
 		$this->conexao = new Conexao();
 	}
 
-	public static function listarSanduiche ($idEmpresa) {
+	public static function listarCategorias ($idEmpresa) {
 		$conexao = new Conexao ();
-		$listado = $conexao->consultar("SELECT * FROM cardapio WHERE categoria = 'sanduíche' AND idEmpresa = $idEmpresa ");
-		$resultado = $conexao->resultado("SELECT * FROM cardapio WHERE categoria = 'sanduíche' AND idEmpresa = $idEmpresa ");
-		if ($resultado > 0) {
-			$conexao->encerrar();
-			return $listado;
-		} else {
-			$array = array(
-				"0" => "not found",
-			);
-			return $array;
-		}
-		// '".$dataAtual."%'
-       
+		$listado = $conexao->consultar("SELECT `categoria` FROM cardapio WHERE disponibilidade = 1 AND idEmpresa = $idEmpresa GROUP BY categoria");
+		$conexao->encerrar();
+		return $listado;
 	}
-
-	public static function listarSopa ($idEmpresa) {
+	public static function listarItem ($categoria, $idEmpresa) {
 		$conexao = new Conexao ();
-		$listado = $conexao->consultar("SELECT * FROM cardapio WHERE categoria = 'sopa' AND idEmpresa = $idEmpresa ");
-		$resultado = $conexao->resultado("SELECT * FROM cardapio WHERE categoria = 'sopa' AND idEmpresa = $idEmpresa ");
-		if ($resultado > 0) {
-			$conexao->encerrar();
-			return $listado;
-		} else {
-			$array = array(
-				"0" => "not found",
-			);
-			return $array;
-		}
-		// '".$dataAtual."%'
-       
+		$listado = $conexao->consultar("SELECT `idItem`, `nomeDoProduto`, `descricao`, `preco`, `idEmpresa` FROM cardapio WHERE categoria = '$categoria' AND idEmpresa = $idEmpresa AND disponibilidade = 1 ");
+		$conexao->encerrar();
+		return $listado; 
 	}
-
 	
 }

@@ -20,39 +20,22 @@
 		<h1>Cardápio  <?= $_GET['nomeEmpresa']?></h1>
 		<a href="carrinho.php?nomeEmpresa=<?= $_GET['nomeEmpresa']?>&idEmpresa=<?= $_GET['idEmpresa']?>"><h1>Carrrinho</h1></a>
 	</header>
-	<table border="1" collapse>
-		<tbody>
-			<?php $titulo = 0; foreach (controlCardapio::listarSanduiche($_GET['idEmpresa']) as $fila) {
-				if( $fila != "not found" ) { $titulo++; if($titulo == 1){ echo "<br>Sanduíche";}?>
-				<tr>
-					<td><?= $fila[1] ?></td>
-					<td><?= $fila[2] ?></td>
-					<td><?= $fila[3] ?></td>
-					<td><?= $fila[5] ?></td>
-					
-				<td>
-						<a href="../../Model/Cardapio/carrinho.php?acaoItem=adicionar&idItem=<?=base64_encode($fila[0])?>&nomeItem=<?=base64_encode($fila[2])?>&precoItem=<?=base64_encode($fila[5])?>&idEmpresa=<?=base64_encode($fila[1])?>&local=cardapio&nomeEmpresa=<?=base64_encode($_GET['nomeEmpresa'])?>" onclick="return confirm('Deseja atualizar o status do pedido?')"><img width="20px" src="../../img/adicionar.png"/></a>
+	<?php foreach (controlCardapio::listarCategorias($_GET['idEmpresa']) as $fila) { 
+				echo "<h3>$fila[0]</h3>";
+                foreach (controlCardapio::listarItem($fila[0], $_GET['idEmpresa']) as $fila) { ?>
+				
+                <table>
+             <tr>
+					<td>Nome: <?= $fila[1] ?></td>
+					<td>Descricao: <?=nl2br($fila[2]); ?></td>
+					<td>Preço: <?= $fila[3] ?></td>
+					<td>
+						<a href="../../Model/Cardapio/carrinho.php?acaoItem=adicionar&idItem=<?=base64_encode($fila[0])?>&nomeItem=<?=base64_encode($fila[1])?>&precoItem=<?=base64_encode($fila[3])?>&idEmpresa=<?=base64_encode($fila[4])?>&local=cardapio&nomeEmpresa=<?=base64_encode($_GET['nomeEmpresa'])?>" onclick="return confirm('Deseja atualizar o status do pedido?')"><img width="20px" src="../../img/adicionar.png"/></a>
 					</td>
-				</tr>
-			<?php } } ?>
-		</tbody>
-	</table>
-	<table border="1" collapse>
-		<tbody>
-			<?php $titulo = 0; foreach (controlCardapio::listarSopa($_GET['idEmpresa']) as $fila) { 
-				if( $fila != "not found" ) { $titulo++; if($titulo == 1){ echo "<br>Sopas";}?>
-				<tr>
-					<td><?= $fila[1] ?></td>
-					<td><?= $fila[2] ?></td>
-					<td><?= $fila[3] ?></td>
-					<td><?= $fila[5] ?></td>
 					
-				<td>
-				<a href="../../Model/Cardapio/carrinho.php?acaoItem=adicionar&idItem=<?=base64_encode($fila[0])?>&nomeItem=<?=base64_encode($fila[2])?>&precoItem=<?=base64_encode($fila[5])?>&idEmpresa=<?=base64_encode($fila[1])?>&local=cardapio&nomeEmpresa=<?=base64_encode($_GET['nomeEmpresa'])?>" onclick="return confirm('Deseja atualizar o status do pedido?')"><img width="20px" src="../../img/adicionar.png"/></a>
-					</td>
-				</tr>
-			<?php } } ?>
-		</tbody>
-	</table>
+        </tr>
+        </table>
+				
+		<?php	}} ?>
 </body>
 </html>

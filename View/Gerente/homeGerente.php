@@ -11,5 +11,6 @@
     <a href="Financeiro/pesquisarPorPeriodo.php?data1=null&data2=null&assunto=null"><h4>Financeiro</h4></a>
     <a href="OutrosGastos/homeOutrosGastos.php"><h4>Outros Gastos</h4></a>
     <a href="OutrosGanhos/homeOutrosGanhos.php"><h4>Outros Ganhos</h4></a>
+    <a href="Cardapio/homeCardapio.php"><h4>Cardápio</h4></a>
   </body>
 </html>
