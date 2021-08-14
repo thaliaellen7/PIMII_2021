@@ -1,0 +1,136 @@
+*{
+    margin: 0%;
+    padding: 0%;
+}
+
+body {
+    background-color: #FAF3D8;
+}
+
+p{
+    height: 45%;
+    width: 100%;
+    font-size: 20px;
+    text-align: center;
+    color: #FAF3D8;
+}
+
+.nav{
+    width: 100%;
+    align-items: center;
+    padding: 5px;
+    display: flex;
+    background-color: rgb(240, 77, 77);
+}
+
+.empresa{
+    float: left;
+    padding-left: 5%;
+    width: 200px;
+}
+
+.nome{
+    float: right;
+    padding-left: 50%;
+}
+
+#link_logout {
+    padding-left: 7%;
+    border-radius: 8px;
+    text-align: center;
+    height: 70px;
+    width: 70px;
+}
+
+.pedidos{
+    width: 25%;
+    align-items: center;
+    display: flex;
+    float: left;
+    padding: 2%;
+}
+
+#link_cadpedido {
+    padding-left: 55%;
+    margin-left: 50%;
+    border-radius: 8px;
+    text-align: center;
+    padding: 15px;
+    background-color: rgb(240, 77, 77);
+    margin: 1%;
+    float: right;
+}
+
+h1{
+    margin: 2%;
+}
+
+
+a:link, a:visited {
+	text-decoration: none;
+    color: white;
+    font-size: large;
+	}
+    
+a:hover {
+	text-decoration: underline;
+	color: #FAF3D8;
+	}
+a:active {
+	text-decoration: none
+	}
+
+table {
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+}
+
+table, th, td {
+    border: 1px solid whitesmoke;
+    border-collapse: collapse;
+    height: 30px;
+}
+
+th, td {
+    padding: 5px 10px;
+}
+
+th {
+    color: white;
+    background-color: brown;
+    height: 50px;
+}
+/*linhas de numeros ímpares*/
+table tr:nth-child(even) {
+    background-color: rgb(240, 77, 77);
+    color: white;
+}
+/*linhas de numeros pares*/
+table tr:nth-child(odd) {
+    background-color: #FAF3D8;
+    color: black;
+}
+
+select option {
+    margin: 40px;
+    background: rgb(240, 77, 77);
+    color: #FAF3D8;
+}
+
+/*select option[value="Concluido"] {
+    background: rgba(82, 216, 19, 0.3);
+  }*/
+
+select:has(option[value="Pronto"]) {
+    background-color: red;
+}
+
+select {
+    height: 40px;
+    font-size: medium;
+    background-color: #FAF3D8;
+    border-radius: 8px;
+    border-color: brown;
+}
+

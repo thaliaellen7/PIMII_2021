@@ -1,0 +1,91 @@
+body {
+    background-color: #FAF3D8;
+}
+
+header {
+    text-align: center;
+    background-color: brown;
+    color: #FAF3D8;
+    font-size: larger;
+    border-radius: 8px;
+    margin: 1%;
+    padding: 1%;
+}
+
+.img {
+    display: flex;
+    align-items: center;
+    height: 260px;
+    width: 100%;
+}
+
+table {
+    margin: 1%;
+    width: 98%;
+    text-transform: uppercase;
+    text-align: center;
+    height: 30px;
+}
+
+table, th, td {
+    border: 1px solid whitesmoke;
+    border-collapse: collapse;
+    font-size: large;
+}
+th, td {
+    padding: 5px 10px;
+}
+
+th {
+    color: white;
+    background-color: brown;
+    height: 50px;
+}
+
+/*linhas de numeros ímpares*/
+table tr:nth-child(even) {
+    background-color: rgb(240, 77, 77);
+    color: white;
+}
+
+/*linhas de numeros pares*/
+table tr:nth-child(odd) {
+    background-color: #FAF3D8;
+    color: black;
+}
+
+#coluna-1{
+    text-align: center;
+}
+
+.sub{
+    padding: 5px;
+    float: right;
+    margin: 1%;
+    margin-right: 10%;
+}
+
+.link {
+    border-radius: 8px;
+    text-align: right;
+    padding: 15px;
+    float: left;
+    background-color: rgb(240, 77, 77);
+    margin: 1%;
+    margin-top: 1%;
+}
+
+a:link, a:visited {
+	text-decoration: none;
+    color: black;
+    font-size: large;
+	}
+    
+a:hover {
+	text-decoration: underline;
+	color: #FAF3D8;
+    font-size: 120%;
+	}
+a:active {
+	text-decoration: none
+	}

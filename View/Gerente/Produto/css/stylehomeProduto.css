@@ -1,0 +1,94 @@
+*{
+    margin: 0%;
+    padding: 0%;
+}
+
+body{
+    background-color: #FAF3D8;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    background-color: brown;
+    color: #FAF3D8;
+    font-size: larger;
+    padding: 8px;
+}
+h1{
+    padding-left: 30%;
+}
+#link_logout {
+    padding-left: 29%;
+    float: right;
+    border-radius: 8px;
+    text-align: center;
+    height: 70px;
+    width: 70px;
+}
+
+.link_cadpedido{
+    border-radius: 8px;
+    text-align: center;
+    padding: 15px;
+    background-color: rgb(240, 77, 77);
+    margin: 1%;
+    float: right;
+}
+
+.link_inicio{
+    border-radius: 8px;
+    text-align: center;
+    padding: 15px;
+    background-color: rgb(240, 77, 77);
+    margin: 1%;
+    float: left;
+}
+
+a:link, a:visited {
+	text-decoration: none;
+    color: #FAF3D8;
+    font-size: large;
+	}
+    
+a:hover {
+	text-decoration: underline;
+	color: black;
+    font-size: 120%;
+	}
+a:active {
+	text-decoration: none
+	}
+
+table {
+    text-align: center;
+    text-transform: uppercase;
+    width: 100%;
+}
+
+table, th, td {
+    border: 1px solid whitesmoke;
+    border-collapse: collapse;
+    height: 30px;
+}
+
+th, td {
+    padding: 5px 10px;
+}
+
+th {
+    color: white;
+    background-color: brown;
+    height: 50px;
+}
+/*linhas de numeros ímpares*/
+table tr:nth-child(even) {
+    background-color: rgb(240, 77, 77);
+    color: white;
+}
+/*linhas de numeros pares*/
+table tr:nth-child(odd) {
+    background-color: #FAF3D8;
+    color: black;
+}
