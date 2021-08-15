@@ -12,56 +12,66 @@
 	$rol = controlFuncionario::buscarPorId(base64_decode($_GET['idFuncionario']));
 ?>
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
-	<meta charset="UTF-8" />
-	<title>Funcionario</title>
-	<link rel="stylesheet" href="css/stylelocalDeEntrega.css">
+	<title>Table V01</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/stylehomeFuncionario.css">
+    <link rel="stylesheet" href="css/navbar/style.css" />
+    <link rel="stylesheet" href="css/navbar/header-2.css" />
 </head>
 <body>
-	<header>
-		<div class="link">
-				<a id= "link" href="homeFuncionario.php"> <b><img title= "Atualizar Pedido" width="100px" src="../../../img/back.png"/> <br>Voltar</b></a>
+	    <!-- Header Start -->
+		<header class="site-header">
+      <div class="wrapper site-header__wrapper">
+        <a href="#" class="brand">Brand</a>
+        <nav class="nav">
+          <a href="../../logout.php"><button class="nav__toggle" aria-expanded="false" type="button">
+            Logout
+          </button></a>
+          <ul class="nav__wrapper">
+            <li class="nav__item"><a href="../homeGerente.php">Início</a></li>
+            <li class="nav__item nav__item--end"><a href="../../logout.php">Logout</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <!-- Header End -->
+	<div class="limiter">
+		<div class="container-table100">
+			<div class="wrap-table100">
+				<div class="table100">
+					<table>
+						<thead>
+							<tr class="table100-head">
+								<th class="column1">Rua</th>
+								<th class="column1">N°</th>
+								<th class="column1">Bairro</th>
+								<th class="column1">Complemento</th>
+								<th class="column1">Referência</th>
+								<th class="column1">Estado</th>
+								<th class="column1">Cidade</th>
+								<th class="column1">Telefone</th>
+							</tr>
+						</thead>
+						<tbody>
+								<tr>
+									<td class="column1"><?= $rol[7] ?></td>
+									<td class="column1"><?= $rol[8] ?></td>
+									<td class="column1"><?= $rol[9] ?></td>
+									<td class="column1"><?= $rol[10] ?></td>
+									<td class="column1"><?= $rol[11] ?></td>
+									<td class="column1"><?= $rol[12] ?></td>
+									<td class="column1"><?= $rol[13] ?></td>
+									<td class="column1"><?= $rol[16] ?></td>
+								</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
 		</div>
-		<div id="link_logout">
-			<a href="../../logout.php"><img title= "Atualizar Pedido" width="50px" src="../../../img/logout.png"/>
-			<br> sair</a>
-		</div>
-		<h1>Endereço</h1>		
-	</header>
-	<br>
-	<br>
-	<table border="1" collapse	>
-		<thead>
-			<tr>
-				<th>Rua</th>
-				<th>Número</th>
-				<th>Bairro</th>
-				<th>Complemento</th>
-				<th>Ponto de referência</th>
-				<th>Estado</th>
-				<th>Cidade</th>
-				<th>Telefone</th>
-				<!-- colspan="2" -->
-			</tr>
-		</thead>
-		<tbody>
-				<tr>
-					<td><?= $rol[7] ?></td>
-					<td><?=  $rol[8] ?></td>
-					<td><?= $rol[9] ?></td>
-					<td><?= $rol[10] ?></td>
-					<td><?= $rol[11] ?></td>
-					<td><?= $rol[12] ?></td>
-					<td><?= $rol[13] ?></td>
-					<td><?= $rol[16] ?></td>
-				
-				
-				</tr>
-		
-			
-			
-		</tbody>
-	</table>
+	</div>
+    <script src="css/navbar/header-2.js"></script>
 </body>
 </html>

@@ -13,72 +13,78 @@ if ($_SESSION['autenticado'] != true){
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8" />
-	<title>Garçons</title>
-	<link rel="stylesheet" href="css/stylehomePedido.css">
+	<title>Table V01</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/stylehomePedido.css">
+    <link rel="stylesheet" href="css/navbar/style.css" />
+    <link rel="stylesheet" href="css/navbar/header-2.css" />
 </head>
-
 <body>
-
-<header>
-		<img  width="60px" height="70px" src="../../../img/logo.png"/>
-		<h1>Lista de Pedidos</h1>
-		<div id="link_logout">
-          <a href="../../logout.php"><img title= "Sair do sistema" width="50px" src="../../../img/logout.png"/>
-          <br> sair</a>
-        </div>
-</header>
-
-	<div class="link_cadpedido">
-		<a href="cadPedidoGerente.php"><img title= "Atualizar Pedido" width="50px" src="../../../img/pedidos.png"/> <br> Adicionar Pedido</a>
+	    <!-- Header Start -->
+		<header class="site-header">
+      <div class="wrapper site-header__wrapper">
+        <a href="#" class="brand">Brand</a>
+        <nav class="nav">
+          <a href="../../logout.php"><button class="nav__toggle" aria-expanded="false" type="button">
+            Logout
+          </button></a>
+          <ul class="nav__wrapper">
+            <li class="nav__item"><a href="../homeGerente.php">Início</a></li>
+            <li class="nav__item nav__item--end"><a href="../../logout.php">Logout</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <!-- Header End -->
+	<div class="limiter">
+		<div class="container-table100">
+			<div class="wrap-table100">
+				<div class="table100">
+					<table>
+						<thead>
+							<tr class="table100-head">
+								<th class="column1">Id</th>
+								<th class="column2">Cliente</th>
+								<th class="column3">Pedido</th>
+								<th class="column4">Observação</th>
+								<th class="column5">Preço</th>
+								<th class="column6">Entrega</th>
+								<th class="column6">Pagamento</th>
+								<th class="column6">Data</th>
+								<th class="column6">Status</th>
+								<th class="column6" colspan="3">Ações</th>
+							</tr>
+						</thead>
+						<tbody>
+						<?php foreach (controlPedido::listarPedidosConcluidos() as $fila) { ?>
+								<tr>
+									<td class="column1"><?= $fila[0] ?></td>
+									<td class="column2"><?= $fila[2] ?></td>
+									<td class="column3"><?=nl2br($fila[3]); ?></td>
+									<td class="column3"><?= $fila[4] ?></td>
+									<td class="column4"><?= $fila[5] ?></td>
+									<td class="column6"><?= $fila[7] ?></td>
+									<td class="column6"><?= $fila[6] ?></td>
+									<td class="column6"><?= $fila[16] ?></td>
+									<td class="column6"><?= $fila[17] ?></td>
+									<td class="column5"><a href="editPedidoGerente.php?idPedidos=<?=base64_encode($fila[0])?>"><img width="30px" src="../../../img/editar-arquivo.png"/></a></td>
+									<td class="column5"><a href="../../../Control/Gerente/Pedido/controlPedido.php?a=excluir&idPedidos=<?=base64_encode($fila[0])?>" onclick="return confirm('Deletar pedido?')"><img width="30px" src="../../../img/excluir.png"/></a></td>
+									<td class="column5"><a href="localDeEntregaGerente.php?idPedidos=<?=base64_encode($fila[0])?>" ><img width="30px" src="../../../img/mapa.png"/></a></td>
+								</tr>
+								<?php } ?>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
 	</div>
-
-	<div class="link_inicio">
-		<a href="../homeGerente.php"><img title= "Atualizar Pedido" width="50px" src="../../../img/home.png"/> <br> Inicio</a>
-	</div>
-
-	<table border="1" collapse>
-		<thead>
-			<tr>
-				<th>Id do pedido</th>
-				<th>Nome do cliente</th>
-				<th >Descrição</th>
-				<th>Observação</th>
-				<th>Preço</th>
-				<th>Forma de entrega</th>
-				<th>Forma de Pagamento</th>
-				<th>Data</th>
-				<th>Status</th>
-				<th colspan="4">Ações</th>
-				<!-- colspan="2" -->
-			</tr>
-		</thead>
-		<tbody>
-			<?php foreach (controlPedido::listarPedidosConcluidos() as $fila) { ?>
-				<tr>
-					<td><?= $fila[0] ?></td>
-					<td><?= $fila[2] ?></td>
-					<td><?=nl2br($fila[3]); ?></td>
-					<td><?= $fila[4] ?></td>
-					<td><?= $fila[5] ?></td>
-					<td><?= $fila[7] ?></td>
-					<td><?= $fila[6] ?></td>
-					<td><?= $fila[16] ?></td>
-					<td><?= $fila[17] ?></td>
-					<td>
-						<a href="editPedidoGerente.php?idPedidos=<?=base64_encode($fila[0])?>"><img width="30px" src="../../../img/editar-arquivo.png"/></a>
-					</td>
-					<td>
-						<a href="../../../Control/Gerente/Pedido/controlPedido.php?a=excluir&idPedidos=<?=base64_encode($fila[0])?>" onclick="return confirm('Deletar pedido?')"><img width="30px" src="../../../img/excluir.png"/></a>
-					</td>
-					<td>
-						<a href="localDeEntregaGerente.php?idPedidos=<?=base64_encode($fila[0])?>" ><img width="30px" src="../../../img/mapa.png"/></a>
-					</td>
-				</tr>
-			<?php } ?>
-			
-			
-		</tbody>
-	</table>
+	<div class="fab">
+	<a href="cadPedidoGerente.php"><button class="main">
+  </button></a>
+  <ul>
+  </ul>
+</div>
+    <script src="css/navbar/header-2.js"></script>
 </body>
 </html>

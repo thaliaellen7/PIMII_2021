@@ -1,42 +1,137 @@
-<?php session_start();?>
+<?php
+	require_once '../../Model/Gerente/modelGerente.php';
+$rol = controlGerente::buscarEmpresaPorId($_SESSION['idEmpresa']);
+if ($_SESSION['autenticado'] != true){
+  header('Location: ../../');
+  } else if (($_SESSION['cargoFuncionario'] != "Gerente") && ($_SESSION['autenticado'] == true)){
+    session_destroy();
+    echo ("<SCRIPT LANGUAGE='JavaScript'>
+  window.alert('Você não tem permissão para acessar esta página!');
+  window.location.href='../../';
+  </SCRIPT>");
+  } 
+
+?>
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
   <head>
-    <title>Gerente</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="css/stylehomeGerente.css">
+    <meta charset="UTF-8" />
+    <title>Headers - 4</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="css/reset.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/header-4.css" />
   </head>
-  
-<body>
-  <header>
-      <div class="nav">
-        <img title= "Atualizar Pedido" width="60px" height="70px" src="../../img/logo.png"/>
-        <div class="empresa">
-        <p>Pizzaria Borda de Ouro</p>
+  <body>
+    <!-- Header Start -->
+    <header class="site-header">
+      <div class="wrapper site-header__wrapper">
+        <div class="site-header__start">
+          <a href="#" class="brand"><img id="logo" 
+                    width="60px"
+                    src="../../img/logo.png"
+                      class="active-item"
+                      style="fill-opacity: 1"
+                    ></a>QueroCumê<br>
+                    Empresa: <?=$rol[0]?>
+        
         </div>
-        <div class="nome">
-        <p><?php echo $_SESSION['nomeFuncionario'];?></p>
+        <div class="site-header__end">
+          <nav class="nav">
+            <button class="nav__toggle" aria-expanded="false" type="button">
+              menu
+            </button>
+            <ul class="nav__wrapper">
+              <li class="nav__item">
+                <a href="Produto/homeProduto.php">
+                    <img
+                    width="25px"
+                    src="../../img/produtos.png"
+                      class="active-item"
+                      style="fill-opacity: 1"
+                    >
+                  <br>
+                  <span>Produtos no Estoque</span>
+                </a>
+              </li>
+              <li class="nav__item">
+              <a href="Funcionario/homeFuncionario.php">
+                    <img
+                    width="25px"
+                    src="../../img/funcionário.png"
+                      class="active-item"
+                      style="fill-opacity: 1"
+                    >
+                  <br>
+                  <span>Funcionários</span>
+                </a>
+              </li>
+              <li class="nav__item">
+              <a href="Pedido/homePedido.php">
+                    <img
+                    width="25px"
+                    src="../../img/pedidos.png"
+                      class="active-item"
+                      style="fill-opacity: 1"
+                    >
+                  <br>
+                  <span>Pedidos</span>
+                </a>
+              </li>
+              <li class="nav__item">
+              <a href="OutrosGastos/homeOutrosGastos.php">
+                    <img
+                    width="25px"
+                    src="../../img/gastos.png"
+                      class="active-item"
+                      style="fill-opacity: 1"
+                    >
+                  <br>
+                  <span>Gastos</span>
+                </a>
+              </li>
+              <li class="nav__item">
+              <a href="OutrosGanhos/homeOutrosGanhos.php">
+                    <img
+                    width="25px"
+                    src="../../img/ganhos.png"
+                      class="active-item"
+                      style="fill-opacity: 1"
+                    >
+                  <br>
+                  <span>Ganhos</span>
+                </a>
+              </li>
+              <li class="nav__item">
+              <a href="Financeiro/pesquisarPorPeriodo.php?data1=null&data2=null&assunto=null">
+                    <img
+                    width="25px"
+                    src="../../img/financeiro.png"
+                      class="active-item"
+                      style="fill-opacity: 1"
+                    >
+                  <br>
+                  <span>Financeiro</span>
+                </a>
+              </li>
+              <li class="nav__item">
+              <a href="../logout.php">
+                    <img
+                    width="25px"
+                    src="../../img/logout.png"
+                      class="active-item"
+                      style="fill-opacity: 1"
+                    >
+                  <br>
+                  <span>Logout</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
         </div>
-        <div id="link_logout">
-          <a href="../logout.php"><img title= "Atualizar Pedido" width="50px" src="../../img/logout.png"/>
-          <br> sair</a>
-        </div>
-      </div>   
-  </header>
-  
-    <div class="container">
-      <a id= "link_produtos" href="Produto/homeProduto.php"><img title= "Atualizar Pedido" width="130px" src="../../img/produtos.png"/><h4>Gerenciar <br> Produtos</h4></a>
-      <a id= "link_funcionarios" href="Funcionario/homeFuncionario.php"><img title= "Atualizar Pedido" width="130px" src="../../img/funcionário.png"/><h4>Gerenciar <br> Funcionários</h4></a>
-      <a id= "link_pedidos" href="Pedido/homePedido.php"><img title= "Atualizar Pedido" width="140px" src="../../img/pedidos.png"/><h4>Gerenciar <br> Pedidos</h4></a>  
-    </div>
-    <div class="container-a">
-      <a id= "link_gastos" href="OutrosGastos/homeOutrosGastos.php"><img title= "Atualizar Pedido" width="160px" src="../../img/gastos.png"/> <br> <h4>Gastos +</h4></a>
-      <a id= "link_financeiro" href="Financeiro/pesquisarPorPeriodo.php?data1=null&data2=null&assunto=null"><img width="150px" src="../../img/financeiro.png"/><br><h4>Financeiro</h4></a>
-      <a id= "link_ganhos" href="OutrosGanhos/homeOutrosGanhos.php"><img title= "Atualizar Pedido" width="150px" src="../../img/ganhos.png"/> <br> <h4>Ganhos +</h4></a>
-    </div>
-    <div class="container-b">
-      <a id= "link_cardapio" href="Cardapio/homeCardapio.php"><img width="120px" src="../../img/cardapio.png"/><br><h4>Gerenciar <br> Cardápio </h4></a>
-      <div><br></div>
-    </div>
+      </div>
+    </header>
+    <!-- Header End -->
+    <script src="css/header-4.js"></script>
   </body>
 </html>

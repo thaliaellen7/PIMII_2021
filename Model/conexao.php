@@ -3,7 +3,7 @@ class Conexao {
 	private $conexao;
 
 	public function __construct () {
-		$this->conexao = new mysqli('localhost', 'root', '', 'querocume');
+		$this->conexao = new mysqli('127.0.0.1', 'root', '', 'querocume');
 		$this->conexao->set_charset('utf8');
 	}
 

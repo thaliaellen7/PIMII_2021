@@ -12,64 +12,70 @@ if ($_SESSION['autenticado'] != true){
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8" />
-	<title>Funcionario</title>
-	<link rel="stylesheet" href="css/stylehomeFuncionario.css">
+	<title>Table V01</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/stylehomeFuncionario.css">
+    <link rel="stylesheet" href="css/navbar/style.css" />
+    <link rel="stylesheet" href="css/navbar/header-2.css" />
 </head>
 <body>
-	<header>
-		<img  width="60px" height="70px" src="../../../img/logo.png"/>
-		<h1>Lista de Funcionários</h1>
-		<div id="link_logout">
-		<a href="../../logout.php"><img title= "Sair do sistema" width="50px" src="../../../img/logout.png"/>
-          <br> sair</a>
-        </div>
-	</header>
-
-
-	<div class="link_cadfuncionario">
-		<a href="cadFuncionario.php"><img title= "Atualizar Pedido" width="50px" src="../../../img/funcionário.png"/> <br> Cadastrar Funcionário</a>
+	    <!-- Header Start -->
+		<header class="site-header">
+      <div class="wrapper site-header__wrapper">
+        <a href="#" class="brand">Brand</a>
+        <nav class="nav">
+          <a href="../../logout.php"><button class="nav__toggle" aria-expanded="false" type="button">
+            Logout
+          </button></a>
+          <ul class="nav__wrapper">
+            <li class="nav__item"><a href="../homeGerente.php">Início</a></li>
+            <li class="nav__item nav__item--end"><a href="../../logout.php">Logout</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <!-- Header End -->
+	<div class="limiter">
+		<div class="container-table100">
+			<div class="wrap-table100">
+				<div class="table100">
+					<table>
+						<thead>
+							<tr class="table100-head">
+								<th class="column1">Id</th>
+								<th class="column1">Nome</th>
+								<th class="column1">Cargo</th>
+								<th class="column1">Salário</th>
+								<th class="column1">Admissão</th>
+								<th class="column6" colspan="3">Ações</th>
+							</tr>
+						</thead>
+						<tbody>
+						<?php foreach (controlFuncionario::listarFuncionarioAtivo() as $fila) { ?>
+								<tr>
+									<td class="column1"><?= $fila[0] ?></td>
+									<td class="column1"><?= $fila[2] ?></td>
+									<td class="column1"><?= $fila[5] ?></td>
+									<td class="column1"><?= $fila[6] ?></td>
+									<td class="column6"><?= $fila[14] ?></td>
+									<td class="column5"><a href="editFuncionario.php?idFuncionario=<?=base64_encode($fila[0])?>"><img width="30px" src="../../../img/editar-arquivo.png"/></a></td>
+									<td class="column5"><a href="../../../Control/Gerente/Funcionario/controlFuncionario.php?a=excluir&idFuncionario=<?=base64_encode($fila[0])?>" onclick="return confirm('Deletar Funcionário?')"><img width="30px" src="../../../img/excluir.png"/></a></td>
+									<td class="column5"><a href="localDeEntrega.php?idFuncionario=<?=base64_encode($fila[0])?>" ><img width="30px" src="../../../img/mapa.png"/></a></td>
+								</tr>
+								<?php } ?>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
 	</div>
-
-	<div class="link_inicio">
-		<a href="../homeGerente.php"><img title= "Atualizar Pedido" width="50px" src="../../../img/home.png"/> <br> Inicio</a>
-	</div>
-	
-
-	<table border="1" collapse>
-		<thead>
-			<tr>
-				<th>Id do Funcionario</th>
-				<th>Nome</th>
-				<th>Cargo</th>
-				<th>Salário</th>
-				<th>Admissão</th>
-				<th colspan="4">Ações</th>
-				<!-- colspan="2" -->
-			</tr>
-		</thead>
-		<tbody>
-			<?php foreach (controlFuncionario::listarFuncionarioAtivo() as $fila) { ?>
-				<tr>
-					<td><?= $fila[0] ?></td>
-					<td><?= $fila[2] ?></td>
-					<td><?= $fila[5] ?></td>
-					<td><?= $fila[6] ?></td>
-					<td><?= $fila[14] ?></td>
-					<td>
-						<a href="editFuncionario.php?idFuncionario=<?=base64_encode($fila[0])?>"><img width="30px" src="../../../img/editar-arquivo.png"/></a>
-					</td>
-					<td>
-						<a href="../../../Control/Gerente/Funcionario/controlFuncionario.php?a=excluir&idFuncionario=<?=base64_encode($fila[0])?>" onclick="return confirm('Deletar Funcionário?')"><img width="30px" src="../../../img/excluir.png"/></a>
-					</td>
-					<td>
-						<a href="localDeEntrega.php?idFuncionario=<?=base64_encode($fila[0])?>" ><img width="30px" src="../../../img/mapa.png"/></a>
-					</td>
-				</tr>
-			<?php } ?>
-			
-			
-		</tbody>
-	</table>
+	<div class="fab">
+	<a href="cadFuncionario.php"><button class="main">
+  </button></a>
+  <ul>
+  </ul>
+</div>
+    <script src="css/navbar/header-2.js"></script>
 </body>
 </html>
