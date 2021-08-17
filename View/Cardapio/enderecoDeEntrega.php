@@ -11,7 +11,7 @@
 <body>
 	
 	<div id= "container-a">
-		<form id= "form" action="../../Control/Cardapio/controlCardapio.php" method="post">
+		<form id= "form" action="../../Control/Cliente/controlCliente.php" method="post">
 			<fieldset>
 			<legend><b>Adicionar Pedido</b></legend>
 			<br>

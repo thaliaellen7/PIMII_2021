@@ -13,7 +13,7 @@ if ($accion != '') {
 
 	switch ($accion) {
 		case 'Finalizar Pedido':
-            $rol->idEmpresa = $_SESSION['empresaUtilizada'];
+            print $_SESSION['empresaUtilizada'];
             $rol->nomeDoCliente = $_POST['nomeDoCliente'];
             $rol->descricaoPedido = htmlspecialchars($_POST['descricao'], ENT_QUOTES);
             $rol->observacao = $_POST['observacao'];
@@ -51,4 +51,4 @@ if ($accion != '') {
 	}
 }
 
-header('Location: ../../View/Cliente/homeCliente.php');
+header('Location: ../../View/Cardapio/acompanharPedido.php?pTelefone');

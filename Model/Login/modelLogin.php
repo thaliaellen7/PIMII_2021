@@ -7,6 +7,9 @@ if(empty($_POST['email']) || empty($_POST['senha'])) {
 }
 $email = mysqli_real_escape_string($conexao, $_POST['email']);
 $senha = mysqli_real_escape_string($conexao, $_POST['senha']);
+print $_POST['email'];
+print $_POST['senha'];
+print md5($_POST['senha']);
 
 $query = "select * from funcionario where email = '{$email}' and senha = md5('{$senha}')";
 

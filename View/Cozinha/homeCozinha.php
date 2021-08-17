@@ -80,19 +80,19 @@ $rol = controlCozinha::buscarEmpresaPorId($_SESSION['idEmpresa']);
 						<tr class="table100-head">
 								<th class="column1">Nº Pedido</th>
 								<th class="column2">Pedido</th>
-								<th class="column3">Observação</th>
-								<th class="column4">Horário</th>
-								<th class="column5">Pedido Pronto</th>
+								<th class="column1">Observação</th>
+								<th class="column1">Horário</th>
+								<th class="column1">Pedido Pronto</th>
 							</tr>
 						</thead>
 						<tbody>
 						<?php foreach (controlCozinha::listarPedidosNovos() as $fila) { $data = explode('-', $fila[16], 2);  ?>
 								<tr>
 									<td class="column1"><?= $fila[0] ?></td>
-									<td class="column2"><?= $fila[2] ?></td>
-									<td class="column3"><?=nl2br($fila[3]); ?></td>
-									<td class="column4" ><?= $data[1] ?></td>
-									<td class="column5">
+									<td class="column1"><?=nl2br($fila[3]); ?></td>
+									<td class="column1"><?=nl2br($fila[4]); ?></td>
+									<td class="column1"><?=nl2br($fila[16]); ?></td>
+									<td class="column1">
 									<a href="../../Control/Cozinha/controlCozinha.php?a=EditarStatus&idPedidos=<?=base64_encode($fila[0])?>" onclick="return confirm('Deseja concluir o pedido?')"><img title= "Concluir Pedido" width="30px" src="../../img/tarefas-concluidas.png"/></a>
 								</tr>
 								<?php } ?>

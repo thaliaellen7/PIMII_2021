@@ -26,7 +26,14 @@
         </div>
         <div class="site-header__end">
           <nav class="nav">
-           
+		  <button class="nav__toggle" aria-expanded="false" type="button">
+		  <a href="acompanharPedido.php?pTelefone=null" class="brand"><img id="logo" 
+                    width="45px"
+                    src="../../img/pedidos.png"
+                      class="active-item"
+                      style="fill-opacity: 1"
+                    ></a>
+            </button>
             <ul class="nav__wrapper">
             </ul>
           </nav>
