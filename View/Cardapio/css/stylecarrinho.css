@@ -1,0 +1,59 @@
+
+.link_local{
+    position: relative;
+    width: 100%;
+    text-align: center;
+    border-radius: 8px;
+    float: right;
+    padding: 5px 10px;
+    background-color: #D10050 ;
+
+    
+}
+.link_local_right{
+    position: relative;
+    width: 100%;
+    text-align: center;
+    border-radius: 8px;
+    float: center;
+    padding: 5px 10px;
+    background-color: #2BC48A;
+
+    
+}
+    
+table {
+    text-align: left;
+    text-transform: uppercase;
+    height: 30px;
+    width: 100%;
+}
+
+table, th, td {
+    font-size: large;
+}
+
+th, td {
+    padding: 5px 10px;
+}
+th {
+    color: black;
+  
+}
+td{
+    background-color: #6377E7;
+
+    color: #FAF3D8;
+}
+
+.img{
+    width: 100vw;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
